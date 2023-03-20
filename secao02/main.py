@@ -20,7 +20,11 @@ def fake_db():
           print('fechando conexao com BD...')   
           sleep(1)
 
-app = FastAPI() 
+app = FastAPI(  
+     title='API de Cursos', 
+     version='0.0.1',   
+     description='API para estudos'
+) 
     
 cursos = { 
 1: {    
