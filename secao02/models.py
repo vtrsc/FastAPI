@@ -11,7 +11,7 @@ class Curso(BaseModel):
 
 
 
-#cursos = [
-#    Curso(id=1, titulo='Programação para Leigos', aulas=42, horas=56),
-#    Curso(id=2, titulo='Algoritmos e Lógica de Programação', aulas=52, horas=66),
-#]m 
+cursos = [
+    Curso(id=1, titulo='Programação para Leigos', aulas=42, horas=56),
+    Curso(id=2, titulo='Algoritmos e Lógica de Programação', aulas=52, horas=66),
+] 

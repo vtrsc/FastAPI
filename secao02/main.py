@@ -8,7 +8,8 @@ from fastapi import status
 from models import Curso    
 from fastapi import Path    
 from fastapi import Depends             
-from time   import sleep
+from time   import sleep    
+from models import cursos
 
 
 
@@ -26,22 +27,16 @@ app = FastAPI(
      description='API para estudos'
 ) 
     
-cursos = { 
-1: {    
-    "titulo":"bla bla 1", 
-    "aulas": 112,   
-    "horas": 34
-} , 
 
-2:{ 
-    "titulo": "bla bla 2",  
-    "aulas": 113,   
-    "horas": 45
-},  
 
- }      
+    
 
-@app.get('/cursos')  
+@app.get('/cursos', 
+         description='retorna todos os cursos ou uma lista vaia',   
+         summary='retorna todos os cursos', 
+         response_model=List[Curso],    
+         response_description='Cursos encontrados com sucesso'   
+            )  
 async def get_cursos(db: Any = Depends(fake_db)): 
     return cursos       
 
