@@ -36,18 +36,33 @@ async def post_curso(curso: CursoModel, db: AsyncSession = Depends(get_session))
 
 
 
-# GET CURSO 
+# GET CURSOS 
 @router.get('/',response_model=List[CursoModel])
 async def get_cursos(db: AsyncSession = Depends(get_session)):
     async with db as session:   
         query = select(CursoModel)  
         result = await session.execute(query)
         cursos: List[CursoModel] = result.scalars().all()   
-        return cursos
+        return cursos   
+    
+
+#GET CURSO
+@router.get('{/curso_id}' ,status_code=status.HTTP_202_ACCEPTED, response_model=CursoModel)
+async def get_curso(curso_id = int , db: AsyncSession = Depends(get_session)):
+    async with db as session:
+        query = select(CursoModel).filter(CursoModel.id == curso_id)
+        result = await session.execute(query)
+        curso: CursoModel =  result.scalar_one_or_none()
+        if curso:   
+            return curso    
+        else:
+            raise HTTPException(detail='Curso nao encontrado',
+                                 status_code=status.HTTP_404_NOT_FOUND)
+
     
 # PUT CURSO 
 
-@router.put('/',status_code=status.HTTP_202_ACCEPTED , response_model=CursoModel)
+@router.put('/',status_code=status.HTTP_200_OK , response_model=CursoModel)
 async def put_curso(curso: CursoModel, db: AsyncSession = Depends(get_session)):    
     async with db as session:   
         query = select(CursoModel).filter(CursoModel.id == curso.id)   
