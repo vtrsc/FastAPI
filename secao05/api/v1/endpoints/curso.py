@@ -62,8 +62,8 @@ async def get_curso(curso_id = int , db: AsyncSession = Depends(get_session)):
     
 # PUT CURSO 
 
-@router.put('/',status_code=status.HTTP_200_OK , response_model=CursoModel)
-async def put_curso(curso: CursoModel, db: AsyncSession = Depends(get_session)):    
+@router.put('/{curso_id}',status_code=status.HTTP_201_CREATED , response_model=CursoModel)
+async def put_curso( curso_id: int ,curso: CursoModel, db: AsyncSession = Depends(get_session)):    
     async with db as session:   
         query = select(CursoModel).filter(CursoModel.id == curso.id)   
         result = await session.execute(query)   
