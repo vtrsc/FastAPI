@@ -1,6 +1,3 @@
-
-
-
 from fastapi import FastAPI
 
 from core.configs import settings
