@@ -85,6 +85,7 @@ async def put_artigo(artigo_id: int, artigo:ArtigoModel, db: AsyncSession = Depe
             
 #DELETE Artigo
 
+
 @router.delete('/{artigo_id}', status_code=status.HTTP_204_NO_CONTENT)
 async def delete_artigo(artigo_id: int, db: AsyncSession = Depends(get_session), usuario_logado: UsuarioModel = Depends(get_current_user)):
     async with db as session:
@@ -103,3 +104,7 @@ async def delete_artigo(artigo_id: int, db: AsyncSession = Depends(get_session),
         else:
             raise HTTPException(detail='Artigo não encontrado',
                                 status_code=status.HTTP_404_NOT_FOUND)            
+            
+            
+            
+            
