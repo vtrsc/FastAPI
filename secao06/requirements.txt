@@ -3,7 +3,9 @@ asyncpg==0.27.0
 cffi==1.15.1
 click==8.1.3
 cryptography==40.0.2
+dnspython==2.3.0
 ecdsa==0.18.0
+email-validator==2.0.0.post2
 fastapi==0.95.1
 greenlet==2.0.2
 h11==0.14.0

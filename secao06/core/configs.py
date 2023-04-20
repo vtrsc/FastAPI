@@ -6,7 +6,7 @@ from  sqlalchemy.ext.declarative import declarative_base
 
 class Settings(BaseSettings):
     API_V1_STR: str = '/api/v1'
-    DB_URL: str = 'postgresql+asyncpg://geek:university@localhost:5432/faculdade'
+    DB_URL: str = 'postgresql+asyncpg://geek:university@172.30.72.61:5432/faculdade'
     DBBaseModel = declarative_base()
     """
     terminal > python > import secrets > token: str = secrets.token_urlsafe(32)  >  token > ex: M-tjOP8YLH82nBQRJEZxRMFK2VD4-1Qi5PQ25FlRHr4
